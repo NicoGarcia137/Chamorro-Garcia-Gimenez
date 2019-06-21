@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Objects;
+
 public class Receta {
     private int id;
     private static int generateId=1;
@@ -23,6 +25,12 @@ public class Receta {
         generateId++;
     }
 
+    @Override
+    public String toString() {
+        String base=" ID:%d \n Nombre:%s \n Litros de Agua:%.2f";
+        return String.format(base,getId(),getNombre(),getLitrosAgua());
+    }
+
     public String getNombre() {
         return Nombre;
     }
@@ -38,5 +46,17 @@ public class Receta {
     public void setLitrosAgua(float litrosAgua) {
         LitrosAgua = litrosAgua;
     }
-    
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Receta receta = (Receta) o;
+        return Objects.equals(Nombre, receta.Nombre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(Nombre);
+    }
 }
