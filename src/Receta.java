@@ -27,7 +27,7 @@ public class Receta {
 
     @Override
     public String toString() {
-        String base=" ID:%d \n Nombre:%s \n Litros de Agua:%.2f";
+        String base= " ID:%d \n Nombre:%s \n Litros de Agua:%.2f";
         return String.format(base,getId(),getNombre(),getLitrosAgua());
     }
 
