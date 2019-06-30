@@ -2,7 +2,7 @@ import java.util.Objects;
 
 public class Ingrediente {
 private int codigo;
-private static int generatecodigo=1;
+private static int generatecodigo=200;
 private String nombre;
 private int CantBolsas;
 private int KgXBolsa;

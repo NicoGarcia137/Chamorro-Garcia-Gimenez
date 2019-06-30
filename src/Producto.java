@@ -8,16 +8,28 @@ public abstract class Producto {
     private float kgXcaja;
     private Receta receta;
     private int cantCajaxPallet;
+    private float precioxKg;
 
     //Constructors
-    public Producto(String nombre, float kgXcaja, Receta receta, int cantCajaxPallet) {
+    public Producto(String nombre, float kgXcaja, Receta receta, int cantCajaxPallet,float precioxKg) {
         setId();
         setNombre(nombre);
         setKgXcaja(kgXcaja);
         setReceta(receta);
         setCantCajaxPallet(cantCajaxPallet);
+        setPrecioxKg(precioxKg);
+
     }
     //getters y setters
+
+    public float getPrecioxKg() {
+        return precioxKg;
+    }
+
+    private void setPrecioxKg(float precioxKg) {
+        this.precioxKg = precioxKg;
+    }
+
     public int getId() {
         return id;
     }
@@ -61,9 +73,9 @@ public abstract class Producto {
 
     //to String
     public String toString() {
-        String base=("\nProducto\nID: %d\n Nombre: %s\n KgxCaja: %.2f\n CantCajaxPallet: %d\nReceta Nombre: %s\n");
+        String base=("\nProducto\nID: %d\n Nombre: %s\n KgxCaja: %.2f\n CantCajaxPallet: %d\nReceta Nombre: %s\nPrecio x kg: %.2f\n");
 
-        return String.format(base,getId(),getNombre(),getKgXcaja(),getCantCajaxPallet(),getReceta().getNombre());
+        return String.format(base,getId(),getNombre(),getKgXcaja(),getCantCajaxPallet(),getReceta().getNombre(),getPrecioxKg());
     }
 
     //Equals y Hashcode

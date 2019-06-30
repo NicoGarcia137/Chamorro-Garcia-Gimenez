@@ -1,12 +1,13 @@
 public class FiletMerluza extends Mariscos{
-    //Private Attrivutes
+    //Private Attributes
     private int canBolPanSecundario;
     private String tipoPanSecundario;
 
     //Constructors
 
-    public FiletMerluza(String nombre, float kgXcaja, Receta receta, int cantCajaxPallet, float velocidadTunel, int temperaturaFrio, int temperaturaAceiteCelcius, int tiempoCongeladoMin, int cantBolsasPan, int cantBolsasBatter, float pesoUnidadGr, String tipoPan, float kgIngresados, int canBolPanSecundario, String tipoPanSecundario) {
-        super(nombre, kgXcaja, receta, cantCajaxPallet, velocidadTunel, temperaturaFrio, temperaturaAceiteCelcius, tiempoCongeladoMin, cantBolsasPan, cantBolsasBatter, pesoUnidadGr, tipoPan, kgIngresados);
+
+    public FiletMerluza(String nombre, float kgXcaja, Receta receta, int cantCajaxPallet, float precioxKg, float velocidadTunel, int temperaturaFrio, int temperaturaAceiteCelcius, int tiempoCongeladoMin, int cantBolsasPan, int cantBolsasBatter, float pesoUnidadGr, String tipoPan, float kgIngresados, int canBolPanSecundario, String tipoPanSecundario) {
+        super(nombre, kgXcaja, receta, cantCajaxPallet, precioxKg, velocidadTunel, temperaturaFrio, temperaturaAceiteCelcius, tiempoCongeladoMin, cantBolsasPan, cantBolsasBatter, pesoUnidadGr, tipoPan, kgIngresados);
         setCanBolPanSecundario(canBolPanSecundario);
         setTipoPanSecundario(tipoPanSecundario);
     }

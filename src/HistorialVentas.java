@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class HistorialVentas extends Lista{
+public class HistorialVentas extends  Lista{
     //Private Attributes
     private static int code = 0;
     private int id;

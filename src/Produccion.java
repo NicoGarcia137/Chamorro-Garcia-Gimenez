@@ -1,6 +1,6 @@
 public class Produccion {
     //Private attributes
-    private static int code=0;
+    private static int code=1000;
     private int lote;
     private Producto productoElaborado;
     private String fecha;
@@ -16,6 +16,7 @@ public class Produccion {
         setCantCajasProducidas(cantCajasProducidas);
         setLote();
         setDisponible();
+        setCantKgProducidos();
     }
 
     //Getters & Setters
@@ -57,8 +58,8 @@ public class Produccion {
         return cantKgProducidos;
     }
 
-    private void setCantKgProducidos(float cantKgProducidos) {
-        this.cantKgProducidos = cantKgProducidos;
+    private void setCantKgProducidos() {
+        cantKgProducidos=calcularKgProducidos();
     }
 
     public boolean isDisponible() {
@@ -72,8 +73,8 @@ public class Produccion {
     //Methods
     //To String
     public String toString() {
-        String messageFormat=("\nLote: %d\nFecha: %s\nProducto Elaborado: %s\nCantidad de cajas producidas: %d\nCantidad de kilos producidos: %.2f\nDisponible: %s\n");
-        return String.format(messageFormat,getLote(),getFecha(),getProductoElaborado().getNombre(),getCantCajasProducidas(),calcularKgProducidos(),isDisponible());
+        String messageFormat=("\nLote: %d\nFecha Elaboracion : %s\nProducto Elaborado: %s\nCantidad de cajas producidas: %d\nCantidad de kilos producidos: %.2f\nDisponible: %s\n");
+        return String.format(messageFormat,getLote(),getFecha(),getProductoElaborado().getNombre(),getCantCajasProducidas(),getCantKgProducidos(),isDisponible());
     }
 
     public float calcularKgProducidos()

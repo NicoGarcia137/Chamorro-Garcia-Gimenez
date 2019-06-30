@@ -6,12 +6,13 @@ public class LangostinoPelado extends  Mariscos {
 
     //Constructors
 
-    public LangostinoPelado(String nombre, float kgXcaja, Receta receta, int cantCajaxPallet, float velocidadTunel, int temperaturaFrio, int temperaturaAceiteCelcius, int tiempoCongeladoMin, int cantBolsasPan, int cantBolsasBatter, float pesoUnidadGr, String tipoPan, float kgIngresados, int cantBolPanSecundario, String tipoPanSecundario, int cantBolCereal) {
-        super(nombre, kgXcaja, receta, cantCajaxPallet, velocidadTunel, temperaturaFrio, temperaturaAceiteCelcius, tiempoCongeladoMin, cantBolsasPan, cantBolsasBatter, pesoUnidadGr, tipoPan, kgIngresados);
+    public LangostinoPelado(String nombre, float kgXcaja, Receta receta, int cantCajaxPallet, float precioxKg, float velocidadTunel, int temperaturaFrio, int temperaturaAceiteCelcius, int tiempoCongeladoMin, int cantBolsasPan, int cantBolsasBatter, float pesoUnidadGr, String tipoPan, float kgIngresados, int cantBolPanSecundario, String tipoPanSecundario, int cantBolCereal) {
+        super(nombre, kgXcaja, receta, cantCajaxPallet, precioxKg, velocidadTunel, temperaturaFrio, temperaturaAceiteCelcius, tiempoCongeladoMin, cantBolsasPan, cantBolsasBatter, pesoUnidadGr, tipoPan, kgIngresados);
         setCantBolPanSecundario(cantBolPanSecundario);
         setTipoPanSecundario(tipoPanSecundario);
         setCantBolCereal(cantBolCereal);
     }
+
 
     //Getters y Setters
 

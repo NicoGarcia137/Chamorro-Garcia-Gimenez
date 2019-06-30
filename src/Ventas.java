@@ -4,25 +4,35 @@ public class Ventas {
     //Private Attributes
     private static int code = 0;
     private int id;
-    private String producto;
+    private Producto miProducto;
     private float kgVendidos;
     private int cantCajas;
     private float precioXKg;
     private String fecha;
     private float total;
+    private String producto;
+    private int lote;
 
     //Constructors
 
-    public Ventas(String producto, float kgVendidos, int cantCajas, float precioXKg, String fecha) {
+    public Ventas(Producto miProducto,int cantCajas,String fecha) {
         setId();
-        setProducto(producto);
-        setKgVendidos(kgVendidos);
+        setMiProducto(miProducto);
         setCantCajas(cantCajas);
-        setPrecioXKg(precioXKg);
         setFecha(fecha);
+        setPrecioXKg();
+        setProducto();
+        setKgVendidos();
+        setTotal();
+
     }
 
     //Getters & Setters
+
+
+    public int getLote() {
+        return lote;
+    }
 
     public int getId() {
         return id;
@@ -33,20 +43,24 @@ public class Ventas {
         code++;
     }
 
+    private void setPrecioXKg() {
+        precioXKg=miProducto.getPrecioxKg();
+    }
+
     public String getProducto() {
         return producto;
     }
 
-    private void setProducto(String producto) {
-        this.producto = producto;
+    private void setProducto() {
+        producto=miProducto.getNombre();
     }
 
     public float getKgVendidos() {
         return kgVendidos;
     }
 
-    private void setKgVendidos(float kgVendidos) {
-        this.kgVendidos = kgVendidos;
+    public void setKgVendidos() {
+        kgVendidos=calcularKg();
     }
 
     public int getCantCajas() {
@@ -61,10 +75,6 @@ public class Ventas {
         return precioXKg;
     }
 
-    private void setPrecioXKg(float precioXKg) {
-        this.precioXKg =  precioXKg;
-    }
-
     public String getFecha() {
         return fecha;
     }
@@ -77,19 +87,34 @@ public class Ventas {
         return total;
     }
 
-    private void setTotal(float total) {
-        this.total = total;
+    private void setTotal() {
+        total=calcularTotal();
+    }
+
+    public Producto getMiProducto() {
+        return miProducto;
+    }
+
+    private void setMiProducto(Producto miProducto) {
+        this.miProducto = miProducto;
     }
 
     //Methods
     public String toString() {
-        String messageFormat=("Producto: %s\nKilos Vendidos: %.2f\nCantidad de Cajas: %d\nPrecio x Kg: %.2f\nFecha: %s\nTotal: %.2f\n");
-        return String.format(messageFormat,getProducto(),getKgVendidos(),getCantCajas(),getPrecioXKg(),getFecha(),calcularTotal());
+        String messageFormat=("Producto: %s\nKilos Vendidos: %.2f\nCantidad de Cajas: %d\nPrecio x Kg: %.2f\nFecha: %s\nTotal: %.2f\nLote de origen: %.2f\n");
+        return String.format(messageFormat,getProducto(),getKgVendidos(),getCantCajas(),getPrecioXKg(),getFecha(),getTotal(),getLote());
     }
 
-    public float calcularTotal() {
+    private float calcularTotal() {
+        float total;
         total= kgVendidos * precioXKg;
         return total;
+    }
+    private float calcularKg()
+    {
+        float kgVendidos;
+        kgVendidos=cantCajas*miProducto.getKgXcaja();
+        return kgVendidos;
     }
     //Equals && HashCode
 //EQUALS CUALQUIER PARA TESTEAR EL BUSCAR Y ELIMINAR GENERICO DE LA LISTA

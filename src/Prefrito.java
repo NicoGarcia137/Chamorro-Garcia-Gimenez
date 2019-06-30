@@ -10,8 +10,10 @@ public abstract class Prefrito extends Producto {
     private String tipoPan;
 
     //Constructors
-    public Prefrito(String nombre, float kgXcaja, Receta receta, int cantCajaxPallet, float velocidadTunel, int temperaturaFrio, int temperaturaAceiteCelcius, int tiempoCongeladoMin, int cantBolsasPan, int cantBolsasBatter, float pesoUnidadGr, String tipoPan) {
-        super(nombre, kgXcaja, receta, cantCajaxPallet);
+
+
+    public Prefrito(String nombre, float kgXcaja, Receta receta, int cantCajaxPallet, float precioxKg, float velocidadTunel, int temperaturaFrio, int temperaturaAceiteCelcius, int tiempoCongeladoMin, int cantBolsasPan, int cantBolsasBatter, float pesoUnidadGr, String tipoPan) {
+        super(nombre, kgXcaja, receta, cantCajaxPallet, precioxKg);
         setVelocidadTunel(velocidadTunel);
         setTemperaturaFrio(temperaturaFrio);
         setTemperaturaAceiteCelcius(temperaturaAceiteCelcius);
