@@ -47,7 +47,7 @@ private String Fabricante;
         return CantBolsas;
     }
 
-    private void setCantBolsas(Integer cantBolsas) {
+    protected void setCantBolsas(Integer cantBolsas) {
         CantBolsas = cantBolsas;
     }
 
