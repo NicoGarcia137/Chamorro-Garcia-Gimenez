@@ -165,6 +165,25 @@ public class Fabrica extends Lista {
         Produccion produccion= new Produccion(productoAux,fecha,cantidad);
         inventario.agregar(produccion,inventario.getListaProduccion());
     }
+
+    public void comprarIngredientes(int id)
+    {
+        int flag=0;
+        int cantidad;
+        Scanner teclado= new Scanner(System.in);
+        for(int i=0;i<getMiStock().getListaIngredientes().size()&&flag==0;i++)
+        {
+            if(getMiStock().getListaIngredientes().get(i).getCodigo()==id)
+            {
+                System.out.println("\nIngrese la cantidad de bolsas que va a ingresar\n");
+                cantidad=teclado.nextInt();
+                getMiStock().sumarCantidadIngredientes(cantidad,getMiStock().getListaIngredientes(),i);
+                System.out.println("\nSe realizo con exito su ingreso!\n");
+                flag=1;
+            }
+        }
+
+    }
     //To String
 
     public String toString() {

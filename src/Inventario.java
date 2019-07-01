@@ -5,16 +5,16 @@ public class Inventario extends Lista {
     //Private attributes
     private static int code=1;
     private int id;
-    private ArrayList<Produccion> listaProduccion;
-    private ArrayList<Ingrediente> listaIngredientes;
+    private List<Produccion> listaProduccion;
+    private List<Ingrediente> listaIngredientes;
     //Constructors
 
-    public Inventario(List<Produccion> listaProduccion, List<Ingrediente> listaIngredientes) {
+    public Inventario() {
         setId();
         setListaProduccion();
         setListaIngredientes();
     }
-    public Inventario(ArrayList<Produccion> listaProduccion,ArrayList<Ingrediente> listaIngredientes)
+    public Inventario(List<Produccion> listaProduccion,List<Ingrediente> listaIngredientes)
     {
         setId();
         setListaProduccion(listaProduccion);
@@ -32,11 +32,11 @@ public class Inventario extends Lista {
     }
 
 
-    public ArrayList<Produccion> getListaProduccion() {
+    public List<Produccion> getListaProduccion() {
         return listaProduccion;
     }
 
-    private void setListaProduccion(ArrayList<Produccion> listaProduccion) {
+    private void setListaProduccion(List<Produccion> listaProduccion) {
         this.listaProduccion = listaProduccion;
     }
     private void setListaProduccion()
@@ -44,11 +44,11 @@ public class Inventario extends Lista {
         listaProduccion=new ArrayList<>();
     }
 
-    public ArrayList<Ingrediente> getListaIngredientes() {
+    public List<Ingrediente> getListaIngredientes() {
         return listaIngredientes;
     }
 
-    private void setListaIngredientes(ArrayList<Ingrediente> listaIngredientes) {
+    private void setListaIngredientes(List<Ingrediente> listaIngredientes) {
         this.listaIngredientes = listaIngredientes;
     }
     private void setListaIngredientes()
@@ -61,6 +61,16 @@ public class Inventario extends Lista {
     public String toString() {
         String messageFormat=("\nCodigo: %d\n");
         return String.format(messageFormat,getId());
+    }
+    public void inicializarIngredientes()//NOTA VOLVER A SETEAR EN 0
+    {
+        if (listaIngredientes!=null)
+        {
+            for(int i=0;i<listaIngredientes.size();i++)
+            {
+                listaIngredientes.get(i).setCantBolsas(0);
+            }
+        }
     }
     public int cambiarDisponibilidad(int cantidad,Producto dato)
     {
@@ -101,6 +111,7 @@ public class Inventario extends Lista {
         }
         return total;
     }
+    //MUESTRA MI STOCK DE PRODUCTOS ORGINALES
     public void calcularTotalStockProductos(List<Producto> misProductos,Inventario miStock)
     {
         int acum=0;
@@ -113,5 +124,10 @@ public class Inventario extends Lista {
                     acum=0;
             }
         }
+    }
+    public void sumarCantidadIngredientes(int cantidad,List<Ingrediente> misIngredientes,int pos)
+    {
+        int total=misIngredientes.get(pos).getCantBolsas()+cantidad;
+        misIngredientes.get(pos).setCantBolsas(total);
     }
 }

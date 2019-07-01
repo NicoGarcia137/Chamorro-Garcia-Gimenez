@@ -20,15 +20,25 @@ public class Main {
         List<Ingrediente> listaingredientes = new ArrayList<>();
         List <Produccion> listaProduccion= new ArrayList<>();
         HistorialVentas historial = new HistorialVentas(lista);
-        Inventario inventario=new Inventario(listaProduccion,listaingredientes);
+        Inventario inventario=new Inventario(listaProduccion,miIngredientes);
         Fabrica miFabrica=new Fabrica("Mardi Sa","Ortiz de zarate 3544",historial,inventario,misProductos);
-
-
+        miFabrica.getMiStock().inicializarIngredientes();//Seteo en 0 las cantidades de mis bolsas
+        System.out.println("\n");
+        System.out.println("\n");
+        System.out.println("\n");
+        miFabrica.mostrar(miFabrica.getMiStock().getListaIngredientes());
+        miFabrica.comprarIngredientes(200);
+        System.out.println("\n");
+        System.out.println("\n");
+        System.out.println("\n");
+        miFabrica.mostrar(miFabrica.getMiStock().getListaIngredientes());
+        miFabrica.comprarIngredientes(200);
+        miFabrica.mostrar(miFabrica.getMiStock().getListaIngredientes());
        // okSystem.out.println(produccion.toString());
   //     ok System.out.println(medallonPO.toString());
        // miFabrica.agregar(medallonPO,misProductos);
-        miFabrica.agregar(medallonPO,miFabrica.getMisProductos());
-        System.out.println(miFabrica.getMisProductos().get(0).getReceta().toString());
+     //   miFabrica.agregar(medallonPO,miFabrica.getMisProductos());
+   //     System.out.println(miFabrica.getMisProductos().get(0).getReceta().toString());
         //ok miFabrica.mostrar(miFabrica.getMisProductos().get(0).getReceta().getIngredientes());
 
       /*

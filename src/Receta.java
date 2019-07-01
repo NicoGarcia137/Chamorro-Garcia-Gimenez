@@ -65,15 +65,14 @@ public class Receta {
     //Methods
     public String mostrarIngredientesReceta()
     {
-        String definitivo="";
-        String superString="";
+        String definitivo="\n";
+        String superString="\n";
         String misIngredientes;
         for(int i=0;i<ingredientes.size();i++)
         {
             misIngredientes=ingredientes.get(i).toString();
             definitivo=superString+misIngredientes;
         }
-        //System.out.println(definitivo);
         return definitivo;
     }
     //To String
