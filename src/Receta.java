@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Receta {
@@ -7,7 +8,7 @@ public class Receta {
     private static int generateId=1;
     private String Nombre;
     private float LitrosAgua;
-    private ArrayList<Ingrediente> ingredientes;
+    private List<Ingrediente> ingredientes;
 
     //Constructors
 
@@ -15,9 +16,27 @@ public class Receta {
        setId();
         setNombre(nombre);
         setLitrosAgua(litrosAgua);
+        setIngredientes();
+    }
+    public Receta(String nombre, float litrosAgua,List<Ingrediente>ingredientes) {
+        setId();
+        setNombre(nombre);
+        setLitrosAgua(litrosAgua);
+        setIngredientes(ingredientes);
     }
 
     //Getters && Setters
+    public List<Ingrediente> getIngredientes() {
+        return ingredientes;
+    }
+
+    private void setIngredientes() {
+        ingredientes=new ArrayList<>();
+    }
+
+    private void setIngredientes(List<Ingrediente> ingredientes) {
+        this.ingredientes=ingredientes;
+    }
 
     public int getId() {
         return id;
@@ -44,10 +63,23 @@ public class Receta {
     }
 
     //Methods
+    public String mostrarIngredientesReceta()
+    {
+        String definitivo="";
+        String superString="";
+        String misIngredientes;
+        for(int i=0;i<ingredientes.size();i++)
+        {
+            misIngredientes=ingredientes.get(i).toString();
+            definitivo=superString+misIngredientes;
+        }
+        //System.out.println(definitivo);
+        return definitivo;
+    }
     //To String
     public String toString() {
         String base= "\nID:%d \n Nombre:%s \n Litros de Agua:%.2f\n";
-        return String.format(base,getId(),getNombre(),getLitrosAgua());
+        return String.format(base,getId(),getNombre(),getLitrosAgua())+mostrarIngredientesReceta();
     }
     //Equals
     public boolean equals(Object o) {
