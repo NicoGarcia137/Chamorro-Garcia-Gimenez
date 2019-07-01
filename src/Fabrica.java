@@ -152,8 +152,9 @@ public class Fabrica extends Lista {
             }
         }
     }
-    public void producir(Inventario inventario,List<Producto> misProductos,int pos)
+    public void producir(int pos)
     {
+        int flag=1;
         Scanner teclado = new Scanner(System.in);
         String fecha;
         int cantidad;
@@ -162,10 +163,67 @@ public class Fabrica extends Lista {
         fecha=teclado.nextLine();
         System.out.println("\nIngrese la cantidad de cajas que se producieron\n");
         cantidad=teclado.nextInt();
-        Produccion produccion= new Produccion(productoAux,fecha,cantidad);
-        inventario.agregar(produccion,inventario.getListaProduccion());
+        List<Ingrediente> ingredientesCargados=productoAux.getReceta().getIngredientes();
+        Inventario inventarioAux=new Inventario(miStock.getListaProduccion(),ingredientesCargados);
+        //inventarioAux.inicializarIngredientes();
+        //CARGA DE LAS CANTIDAD NECESARIAS DE MIS INGRENDIENTES DE ACUERDO A LA CANTIDAD DE CAJAS QUE SE QUIERAN PRODUCIR
+        for(int i=0;i<misProductos.get(pos).getReceta().getIngredientes().size();i++)
+        {
+            int flag2=0;
+            for(int j=0;j<inventarioAux.getListaIngredientes().size()&&flag2==0;i++)
+            {
+                if(inventarioAux.getListaIngredientes().get(j).getCodigo()==misProductos.get(pos).getReceta().getIngredientes().get(i).getCodigo())
+                {
+                    System.out.println(cantidad);
+                    System.out.println(misProductos.get(pos).getReceta().getIngredientes().get(i).getCantBolsas());
+                    System.out.println(miStock.getListaIngredientes().get(i).getCantBolsas());
+                    inventarioAux.sumarCantidadIngredientes((cantidad*misProductos.get(pos).getReceta().getIngredientes().get(i).getCantBolsas()),j);
+                    flag2=1;
+                }
+            }
+        }
+        //VALIDACION DE LAS CANTIDADES QUE NECESITO CON RESPECTO AL STOCK DE INGREDIENTES QUE TENGO
+        for (int i=0;i<inventarioAux.getListaIngredientes().size()&&flag==1;i++)
+        {
+            int flag2=0;
+            for(int j=0;j<miStock.getListaIngredientes().size()&&flag2==0;j++)
+            {
+                if(inventarioAux.getListaIngredientes().get(i).getCodigo()==miStock.getListaIngredientes().get(j).getCodigo())
+                {
+                    if(inventarioAux.getListaIngredientes().get(i).getCantBolsas()>=miStock.getListaIngredientes().get(j).getCantBolsas())
+                    {
+                        flag=0;
+                        flag2=1;
+                    }
+                    else
+                    {
+                        miStock.restarCantidadIngredientes(inventarioAux.getListaIngredientes().get(i).getCantBolsas(),j);
+                        System.out.println("Cantidad ingredientes finales\n"+miStock.getListaIngredientes().get(j).getCantBolsas());
+                        flag2=1;
+                    }
+                }
+            }
+
+        }
+        inventarioAux.mostrar(inventarioAux.getListaIngredientes());
+        if(flag==1) {
+            Produccion produccion = new Produccion(productoAux, fecha, cantidad);
+            miStock.agregar(produccion, miStock.getListaProduccion());
+        }
+        else
+            System.out.println("\nNo se puede realizar su produccion porque no cuenta con la cantidad de ingredientes suficientes!!\n");
     }
 
+    public void inicializarIngredientes()//NOTA VOLVER A SETEAR EN 0
+    {
+        if (miStock!=null)
+        {
+            for(int i=0;i<miStock.getListaIngredientes().size();i++)
+            {
+                miStock.getListaIngredientes().get(i).setCantBolsas(0);
+            }
+        }
+    }
     public void comprarIngredientes(int id)
     {
         int flag=0;
@@ -177,7 +235,7 @@ public class Fabrica extends Lista {
             {
                 System.out.println("\nIngrese la cantidad de bolsas que va a ingresar\n");
                 cantidad=teclado.nextInt();
-                getMiStock().sumarCantidadIngredientes(cantidad,getMiStock().getListaIngredientes(),i);
+                getMiStock().sumarCantidadIngredientes(cantidad,i);
                 System.out.println("\nSe realizo con exito su ingreso!\n");
                 flag=1;
             }

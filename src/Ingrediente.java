@@ -85,7 +85,7 @@ private String Fabricante;
 
     //Sobreescritura
     public String toString() {
-        String messageFormat = "Codigo: %d \n Nombre:%s \n Cantidad Bolsas:%d \n Kg x Bolsa: %d \n  Descripcion :%s \n Vencimiento:%s \n Fabricante: %s ";
+        String messageFormat = "\nCodigo: %d\nNombre: %s\nCantidad Bolsas: %d\nKg x Bolsa: %d\nDescripcion : %s\nVencimiento: %s\nFabricante: %s\n";
 
         return String.format(messageFormat,getCodigo(),getNombre(),getCantBolsas(),getKgXBolsa(),getDescripcion(),getVencimiento(),getFabricante());
     }

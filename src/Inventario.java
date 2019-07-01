@@ -62,16 +62,7 @@ public class Inventario extends Lista {
         String messageFormat=("\nCodigo: %d\n");
         return String.format(messageFormat,getId());
     }
-    public void inicializarIngredientes()//NOTA VOLVER A SETEAR EN 0
-    {
-        if (listaIngredientes!=null)
-        {
-            for(int i=0;i<listaIngredientes.size();i++)
-            {
-                listaIngredientes.get(i).setCantBolsas(0);
-            }
-        }
-    }
+
     public int cambiarDisponibilidad(int cantidad,Producto dato)
     {
         int cant=cantidad;
@@ -125,9 +116,18 @@ public class Inventario extends Lista {
             }
         }
     }
-    public void sumarCantidadIngredientes(int cantidad,List<Ingrediente> misIngredientes,int pos)
+    public void sumarCantidadIngredientes(int cantidad,int pos)
     {
-        int total=misIngredientes.get(pos).getCantBolsas()+cantidad;
-        misIngredientes.get(pos).setCantBolsas(total);
+        int total=this.listaIngredientes.get(pos).getCantBolsas()+cantidad;
+        this.listaIngredientes.get(pos).setCantBolsas(total);
+    }
+    public void restarCantidadIngredientes(int cantidad,int pos)
+    {
+        int total;
+        if (cantidad<=listaIngredientes.get(pos).getCantBolsas())
+        {
+            total=listaIngredientes.get(pos).getCantBolsas()-cantidad;
+            listaIngredientes.get(pos).setCantBolsas(total);
+        }
     }
 }
