@@ -2,7 +2,7 @@ import java.util.Objects;
 
 public class Ingrediente {
 private int codigo;
-private static int generatecodigo=1;
+private static int generatecodigo=200;
 private String nombre;
 private int CantBolsas;
 private int KgXBolsa;
@@ -39,7 +39,7 @@ private String Fabricante;
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    private void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
@@ -47,7 +47,7 @@ private String Fabricante;
         return CantBolsas;
     }
 
-    public void setCantBolsas(Integer cantBolsas) {
+    private void setCantBolsas(Integer cantBolsas) {
         CantBolsas = cantBolsas;
     }
 
@@ -55,7 +55,7 @@ private String Fabricante;
         return KgXBolsa;
     }
 
-    public void setKgXBolsa(Integer kgXBolsa) {
+    private void setKgXBolsa(Integer kgXBolsa) {
         KgXBolsa = kgXBolsa;
     }
 
@@ -63,7 +63,7 @@ private String Fabricante;
         return Descripcion;
     }
 
-    public void setDescripcion(String descripcion) {
+    private void setDescripcion(String descripcion) {
         Descripcion = descripcion;
     }
 
@@ -71,7 +71,7 @@ private String Fabricante;
         return Vencimiento;
     }
 
-    public void setVencimiento(String vencimiento) {
+    private void setVencimiento(String vencimiento) {
         Vencimiento = vencimiento;
     }
 
@@ -79,13 +79,11 @@ private String Fabricante;
         return Fabricante;
     }
 
-    public void setFabricante(String fabricante) {
+    private void setFabricante(String fabricante) {
         Fabricante = fabricante;
     }
 
     //Sobreescritura
-
-    @Override
     public String toString() {
         String messageFormat = "Codigo: %d \n Nombre:%s \n Cantidad Bolsas:%d \n Kg x Bolsa: %d \n  Descripcion :%s \n Vencimiento:%s \n Fabricante: %s ";
 

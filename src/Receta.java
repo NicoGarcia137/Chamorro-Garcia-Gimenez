@@ -1,18 +1,23 @@
 import java.util.ArrayList;
+import java.util.Objects;
+
 public class Receta {
+    //Private attributes
     private int id;
     private static int generateId=1;
     private String Nombre;
     private float LitrosAgua;
     private ArrayList<Ingrediente> ingredientes;
 
-    //Constructor
+    //Constructors
 
     public Receta(String nombre, float litrosAgua) {
        setId();
         setNombre(nombre);
         setLitrosAgua(litrosAgua);
     }
+
+    //Getters && Setters
 
     public int getId() {
         return id;
@@ -22,7 +27,6 @@ public class Receta {
         this.id = generateId;
         generateId++;
     }
-
     public String getNombre() {
         return Nombre;
     }
@@ -35,8 +39,25 @@ public class Receta {
         return LitrosAgua;
     }
 
-    public void setLitrosAgua(float litrosAgua) {
+    private void setLitrosAgua(float litrosAgua) {
         LitrosAgua = litrosAgua;
     }
-    
+
+    //Methods
+    //To String
+    public String toString() {
+        String base= "\nID:%d \n Nombre:%s \n Litros de Agua:%.2f\n";
+        return String.format(base,getId(),getNombre(),getLitrosAgua());
+    }
+    //Equals
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Receta receta = (Receta) o;
+        return Objects.equals(Nombre, receta.Nombre);
+    }
+
+    public int hashCode() {
+        return Objects.hash(Nombre);
+    }
 }
