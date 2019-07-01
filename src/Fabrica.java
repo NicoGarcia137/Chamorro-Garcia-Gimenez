@@ -38,11 +38,11 @@ public class Fabrica extends Lista {
         return misProductos;
     }
 
-    public void setMisProductos(List<Producto> misProductos) {
+    private void setMisProductos(List<Producto> misProductos) {
         this.misProductos = misProductos;
     }
 
-    public void setMisProductos() {
+    private void setMisProductos() {
         misProductos=new ArrayList<>();
     }
 
@@ -88,30 +88,52 @@ public class Fabrica extends Lista {
     }
 
     //Methods//FALTAN DESARROLLAR EL METODO VENDER
-    public void vender(Inventario inventario,HistorialVentas historialVentas,List<Producto> misProductos,int pos)
+    public List<Produccion> vender(Inventario inventarioDisponible,HistorialVentas historialVentas,List<Producto> misProductos,int pos)
     {
-        Producto miProducto=misProductos.get(pos);
-        Scanner teclado=new Scanner(System.in);
-        String fecha;
-        int cantidad;
-        int opcion;
-        System.out.println("\nIngrese cantidad a vender:\n");
-        fecha=teclado.nextLine();
-        System.out.println("\nIngrese la fecha de su venta:\n");
-        cantidad=teclado.nextInt();
-        Ventas ventaAux=new Ventas(miProducto,cantidad,fecha);
-        System.out.println("\nDesea confirmar su venta?:\n");
-        System.out.println("\n0-->Confirmar venta\n");
-        System.out.println("\n1-->Cancelar venta\n");
-        opcion=teclado.nextInt();
-        if (opcion==0) {
-            historialVentas.agregar(ventaAux, historialVentas.getVentas());
-            System.out.println("\nSu venta se ha realizado con exito!!\n");
-           // inventario.getListaProduccion().get(0).getCantCajasProducidas()= cantidad;
+        List<Produccion> inventario=null;
+        if (inventarioDisponible!=null) {
+            Producto miProducto = misProductos.get(pos);
+            Scanner teclado = new Scanner(System.in);
+            String fecha;
+            int cantidad;
+            int opcion = -1;
+            mostrar(inventarioDisponible.getListaProduccion());
+            System.out.println("\nIngrese cantidad a vender:\n");
+            fecha = teclado.nextLine();
+            System.out.println("\nIngrese la fecha de su venta:\n");
+            cantidad = teclado.nextInt();
+            Ventas ventaAux = new Ventas(miProducto, cantidad, fecha);
+            while (opcion != 0 || opcion != 1) {
+                System.out.println("\nDesea confirmar su venta?:\n");
+                System.out.println("\n0-->Confirmar venta\n");
+                System.out.println("\n1-->Cancelar venta\n");
+                opcion = teclado.nextInt();
+                if (opcion == 0) {
+                    while (cantidad != 0) {
+                        cantidad=inventarioDisponible.cambiarDisponibilidad(cantidad, miProducto);
+                    }
+                    for (int i = 0; i < inventarioDisponible.getListaProduccion().size(); i++) {
+                        if (inventarioDisponible.getListaProduccion().get(i).getProductoElaborado().equals(miProducto) == true && inventarioDisponible.getListaProduccion().get(i).isDisponible() == false) {
+                            ventaAux.agregar(inventarioDisponible.getListaProduccion().get(i).getLote(), ventaAux.getLotes());
+                        }
+                    }
+                    historialVentas.agregar(ventaAux, historialVentas.getVentas());
+                    inventario=inventarioDisponible.getListaProduccion();
+                    System.out.println("\nSu venta se ha realizado con exito!!\n");
+                    // inventario.getListaProduccion().get(0).getCantCajasProducidas()= cantidad;
+                }
+                if (opcion == 1) {
+                    System.out.println("\nSu venta ha sido cancelada!\n");
+                } else {
+                    System.out.println("\nLa opcion ingresada es incorrecta\n");
+                    System.out.println("\nDesea confirmar su venta?:\n");
+                    System.out.println("\n0-->Confirmar venta\n");
+                    System.out.println("\n1-->Cancelar venta\n");
+                    opcion = teclado.nextInt();
+                }
+            }
         }
-        else {
-            System.out.println("\nSu venta ha sido cancelada!\n");
-        }
+        return inventario;
     }
     public void producir(Inventario inventario,List<Producto> misProductos,int pos)
     {
@@ -125,7 +147,6 @@ public class Fabrica extends Lista {
         cantidad=teclado.nextInt();
         Produccion produccion= new Produccion(productoAux,fecha,cantidad);
         inventario.agregar(produccion,inventario.getListaProduccion());
-
     }
     //To String
 

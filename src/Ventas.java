@@ -1,6 +1,8 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-public class Ventas {
+public class Ventas extends Lista{
     //Private Attributes
     private static int code = 0;
     private int id;
@@ -11,7 +13,7 @@ public class Ventas {
     private String fecha;
     private float total;
     private String producto;
-    private int lote;
+    private List<Integer> lotes=new ArrayList<>();
 
     //Constructors
 
@@ -30,8 +32,8 @@ public class Ventas {
     //Getters & Setters
 
 
-    public int getLote() {
-        return lote;
+    public List<Integer> getLotes() {
+        return lotes;
     }
 
     public int getId() {
@@ -59,7 +61,7 @@ public class Ventas {
         return kgVendidos;
     }
 
-    public void setKgVendidos() {
+    protected void setKgVendidos() {
         kgVendidos=calcularKg();
     }
 
@@ -101,8 +103,9 @@ public class Ventas {
 
     //Methods
     public String toString() {
-        String messageFormat=("Producto: %s\nKilos Vendidos: %.2f\nCantidad de Cajas: %d\nPrecio x Kg: %.2f\nFecha: %s\nTotal: %.2f\nLote de origen: %.2f\n");
-        return String.format(messageFormat,getProducto(),getKgVendidos(),getCantCajas(),getPrecioXKg(),getFecha(),getTotal(),getLote());
+        String messageFormat=("Producto: %s\nKilos Vendidos: %.2f\nCantidad de Cajas: %d\nPrecio x Kg: %.2f\nFecha: %s\nTotal: %.2f\n");
+        return String.format(messageFormat,getProducto(),getKgVendidos(),getCantCajas(),getPrecioXKg(),getFecha(),getTotal())+("\nLote de origen:\n");
+
     }
 
     private float calcularTotal() {

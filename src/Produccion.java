@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Produccion {
     //Private attributes
     private static int code=1000;
@@ -6,7 +8,7 @@ public class Produccion {
     private String fecha;
     private int cantCajasProducidas;
     private float cantKgProducidos;
-    private boolean disponible;
+    private boolean disponible=true;
 
     //Constructor
 
@@ -15,7 +17,6 @@ public class Produccion {
         setFecha(fecha);
         setCantCajasProducidas(cantCajasProducidas);
         setLote();
-        setDisponible();
         setCantKgProducidos();
     }
 
@@ -50,7 +51,7 @@ public class Produccion {
         return cantCajasProducidas;
     }
 
-    private void setCantCajasProducidas(int cantCajasProducidas) {
+    protected void setCantCajasProducidas(int cantCajasProducidas) {
         this.cantCajasProducidas = cantCajasProducidas;
     }
 
@@ -66,8 +67,8 @@ public class Produccion {
         return disponible;
     }
 
-    private void setDisponible() {
-        disponible=true;
+    protected void setDisponible() {
+        disponible=false;
     }
 
     //Methods
@@ -81,5 +82,16 @@ public class Produccion {
     {
         float total=getCantCajasProducidas()*getProductoElaborado().getKgXcaja();
         return total;
+    }
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Produccion)) return false;
+        Produccion that = (Produccion) o;
+        return lote == that.lote;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(lote);
     }
 }

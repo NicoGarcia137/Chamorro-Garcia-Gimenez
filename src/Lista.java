@@ -18,6 +18,7 @@ public  class  Lista<T> {
             milista.add(dato);}
     }
 
+
     public <T> int buscar(T dato,List<T>miLista)
     {
         int flag=0;
@@ -33,6 +34,24 @@ public  class  Lista<T> {
            }
         }
         return pos;
+    }
+
+
+
+    public <T> List<T> devolverBuscados(T dato,List<T>miLista)
+    {
+        List<T> buscados=null;
+        if((dato!=null)&&(miLista!=null))
+        {
+            for(int i=0;i<miLista.size();i++)
+            {
+                if (miLista.get(i).equals(dato)==true)
+                {
+                    buscados.add(miLista.get(i));
+                }
+            }
+        }
+        return buscados;
     }
 
     public <T> void eliminar(T dato,List<T>miLista)
