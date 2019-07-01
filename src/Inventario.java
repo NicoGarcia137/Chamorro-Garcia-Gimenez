@@ -87,5 +87,31 @@ public class Inventario extends Lista {
         }
         return cant;
     }
-
+    public int calcularTotalProducto(Producto miProducto,Inventario miStock)
+    {
+        int total=0;
+        if(miStock.getListaProduccion()!=null&&miProducto!=null){
+            for(int i=0;i<miStock.getListaProduccion().size();i++)
+            {
+                if(miStock.getListaProduccion().get(i).getProductoElaborado().equals(miProducto))
+                {
+                    total=total+miStock.getListaProduccion().get(i).getCantCajasProducidas();
+                }
+            }
+        }
+        return total;
+    }
+    public void calcularTotalStockProductos(List<Producto> misProductos,Inventario miStock)
+    {
+        int acum=0;
+        if(miStock.getListaProduccion()!=null&&misProductos!=null)
+        {
+            for(int i=0;i<misProductos.size();i++)
+            {
+                    acum=calcularTotalProducto(misProductos.get(i),miStock);
+                    System.out.println(misProductos.get(i).getNombre()+": "+acum+"\n");
+                    acum=0;
+            }
+        }
+    }
 }

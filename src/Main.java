@@ -35,6 +35,7 @@ public class Main {
         System.out.println("\n");
         System.out.println("\n");
         System.out.println("\n");
+        miFabrica.getMiStock().calcularTotalStockProductos(misProductos,miFabrica.getMiStock());
      //   miFabrica.mostrar(miFabrica.getMiStock().getListaProduccion());
         //miFabrica.mostrar(historial.getVentas());
         System.out.println("\n");
@@ -53,6 +54,7 @@ public class Main {
         System.out.println("\n");
         System.out.println("\n");
         miFabrica.mostrar(miFabrica.getMiStock().getListaProduccion());
+        miFabrica.getMiStock().calcularTotalStockProductos(misProductos,miFabrica.getMiStock());
        // miFabrica.mostrar(misProductos);
         //NOTA FALTAN LAS BUSQUEDAS TANTO EN INVENTARIO COMO EN HISTORIAL Y TESTEAR
 

@@ -119,21 +119,22 @@ public class Fabrica extends Lista {
                 opcion = teclado.nextInt();
                 switch (opcion) {
                     case 1: {
-                        while (cantidad != 0) {
-                             System.out.println(cantidad);
-                            cantidad = Stock.cambiarDisponibilidad(cantidad, miProducto);
-                            // disponible.mostrar(disponible.getListaProduccion());
-                            System.out.println(cantidad);
-                        }
-                        for (int i = 0; i < Stock.getListaProduccion().size(); i++) {
-                            if (Stock.getListaProduccion().get(i).getProductoElaborado().equals(miProducto) == true && Stock.getListaProduccion().get(i).isDisponible() == false) {
-                                ventaAux.agregar(Stock.getListaProduccion().get(i).getLote(), ventaAux.getLotes());
-                                misProduccionesVendidas.add(Stock.getListaProduccion().get(i));
-                                Stock.getListaProduccion().remove(i);
+                        if(cantidad<Stock.calcularTotalProducto(miProducto,Stock)) {
+                            while (cantidad != 0) {
+                                cantidad = Stock.cambiarDisponibilidad(cantidad, miProducto);
                             }
+                            for (int i = 0; i < Stock.getListaProduccion().size(); i++) {
+                                if (Stock.getListaProduccion().get(i).getProductoElaborado().equals(miProducto) == true && Stock.getListaProduccion().get(i).isDisponible() == false) {
+                                    ventaAux.agregar(Stock.getListaProduccion().get(i).getLote(), ventaAux.getLotes());
+                                    misProduccionesVendidas.add(Stock.getListaProduccion().get(i));
+                                    Stock.getListaProduccion().remove(i);
+                                }
+                            }
+                            historialVentas.agregar(ventaAux, historialVentas.getVentas());
+                            System.out.println("\nSu venta se ha realizado con exito!!\n");
                         }
-                        historialVentas.agregar(ventaAux, historialVentas.getVentas());
-                        System.out.println("\nSu venta se ha realizado con exito!!\n");
+                        else
+                            System.out.println("\nCantidad de productos insuficientes!\n");
                         break;
                     }
                     case 2: {
