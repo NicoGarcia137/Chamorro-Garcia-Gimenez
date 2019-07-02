@@ -100,14 +100,13 @@ public class Fabrica extends Lista {
             fecha = teclado.next();
             Ventas ventaAux = new Ventas(miProducto, cantidad, fecha);
             while (opcion != 1 && opcion != 2) {
-                System.out.println(opcion);
                 System.out.println("\nDesea confirmar su venta?:\n");
                 System.out.println("\n1-->Confirmar venta\n");
                 System.out.println("\n2-->Cancelar venta\n");
                 opcion = teclado.nextInt();
                 switch (opcion) {
                     case 1: {
-                        if(cantidad<miStock.calcularTotalProducto(miProducto,miStock)) {
+                        if(cantidad<miStock.calcularTotalProducto(miProducto)) {
                             while (cantidad != 0) {
                                 cantidad = miStock.cambiarDisponibilidad(cantidad, miProducto);
                             }

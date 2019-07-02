@@ -50,6 +50,7 @@ public class HistorialVentas extends  Lista{
         {
             if(lote==ventas.get(i).getId()) {
                 System.out.println(ventas.get(i).toString());
+                mostrar(ventas.get(i).getLotes());
                 encontrado = 1;
             }
         }
@@ -65,6 +66,7 @@ public class HistorialVentas extends  Lista{
             if(ventas.get(i).getMiProducto().equals(productoABuscar))
             {
                 System.out.println(ventas.get(i).toString());
+                mostrar(ventas.get(i).getLotes());
                 encontrado=1;
             }
         }
@@ -97,6 +99,7 @@ public class HistorialVentas extends  Lista{
           if (ventas.get(i).getFecha()==FechaABuscar)
           {
               System.out.println(ventas.get(i).toString());
+              mostrar(ventas.get(i).getLotes());
               encontrado=1;
           }
           else

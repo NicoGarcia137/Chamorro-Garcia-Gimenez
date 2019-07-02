@@ -104,7 +104,7 @@ public class SistemMenus extends Lista {
                 case 1:///PRODUCIR
                      {
                          System.out.println("\nSus producciones actuales son:\n");
-                         miFabricaTrabajo.getMiStock().calcularTotalStockProductos(miFabricaTrabajo.getMisProductos(),miFabricaTrabajo.getMiStock());
+                         miFabricaTrabajo.getMiStock().calcularTotalStockProductos(miFabricaTrabajo.getMisProductos());
                          System.out.println("\n\n\n");
                          System.out.println("Ingrese el ID del producto a producir\n");
                          int id=scanner.nextInt();
@@ -112,7 +112,7 @@ public class SistemMenus extends Lista {
                      }
                     break;
                 case 2:/// VER PRODUCTOS
-                    miFabricaTrabajo.getMiStock().calcularTotalStockProductos(miFabricaTrabajo.getMisProductos(), miFabricaTrabajo.getMiStock());
+                    miFabricaTrabajo.getMiStock().calcularTotalStockProductos(miFabricaTrabajo.getMisProductos());
                     break;
                 case 3:///VER PRODUCCIONES
                     miFabricaTrabajo.mostrar(miFabricaTrabajo.getMiStock().getListaProduccion());
@@ -162,7 +162,8 @@ public class SistemMenus extends Lista {
             switch (valorMenu) {
 
                 case 1:///VENDER Y AGREGAR A HISTORIAL A VENTAS ESO
-                    int valorProducto=0;
+                {
+                    int valorProducto = -1;
                     int flagin = 0;
                     try {
                         while (flagin == 0) {
@@ -172,47 +173,51 @@ public class SistemMenus extends Lista {
                                 flagin = 1;
                             }
                         }
-                        miFabricaTrabajo.vender(valorProducto-1);
+                        miFabricaTrabajo.vender(valorProducto - 1);
                     } catch (Exception e) {
 
                         System.out.println(e.getMessage());
                     }
-                    break;
+                }
+                break;
                 case 2:///BUSCAR POR LOTE
-                    try {
+                    {
+                        try {
                         int NrLote = 0;
                         System.out.println("Ingrese Nr Lote de Venta:");
                         NrLote = scanner.nextInt();
+                        miFabricaTrabajo.mostrar(miFabricaTrabajo.getMiHistorial().getVentas());
                         miFabricaTrabajo.getMiHistorial().buscarXLote(NrLote);
 
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
 
+                     }
                     }
-
                     break;
                 case 3:/// BUSCAR POR FECHA
-
+                    {
                     String fechaUsr = "";
                     try {
-                        System.out.println("Ingrese Fecha de la venta: ");
+                        System.out.println("\nIngrese Fecha de la venta: \n");
                         fechaUsr = scanner.nextLine();
                         miFabricaTrabajo.getMiHistorial().buscarxFecha(fechaUsr);
                     } catch (Exception f) {
                         System.out.println(f.getMessage());
 
-                    }
+                    }}
                     break;
 
                 case 4:/// BUSCAR POR PRODUCTO
+                    {
                     try {
-                        int valorProduct = -1;
+                        int valorProduct =-1;
                         int flagi = 0;
                         try {
                             while (flagi == 0) {
                                 System.out.println("Ingrese el ID del producto");
                                 valorProduct = scanner.nextInt();
-                                if (valorProduct < miFabricaTrabajo.getMisProductos().size()) {
+                                if (valorProduct <= miFabricaTrabajo.getMisProductos().size()) {
                                     flagi = 1;
                                 }
                             }
@@ -225,23 +230,24 @@ public class SistemMenus extends Lista {
                     } catch (Exception j) {
                         System.out.println(j.getMessage());
                     }
+                }
                     break;
                 case 5:///ELIMINAR POR LOTE
-                    try {
+                {try {
                         int NrLoteElim = 0;
                         System.out.println("Ingrese Nr Lote de Venta a Eliminar:");
                         NrLoteElim = scanner.nextInt();
                         miFabricaTrabajo.getMiHistorial().eliminarxLote(NrLoteElim);
 
                     } catch (Exception e) {
-                        System.out.println(e.getMessage());
-                    }
+                    System.out.println(e.getMessage());
+                }}
                     break;
-                case 6:
+                case 6: {
                     System.out.println("\n----------------------------------------------------------------------------\n");
                     System.out.println("Saliendo de SubMenuVentas ");
                     System.out.println("\n----------------------------------------------------------------------------\n");
-                    break;
+                } break;
                 default:
                     System.out.println("Opción Incorrecta ");
                     break;

@@ -88,28 +88,26 @@ public class Inventario extends Lista {
         }
         return cant;
     }
-    public int calcularTotalProducto(Producto miProducto,Inventario miStock)
+    public int calcularTotalProducto(Producto miProducto)
     {
         int total=0;
-        if(miStock.getListaProduccion()!=null&&miProducto!=null){
-            for(int i=0;i<miStock.getListaProduccion().size();i++)
+            for(int i=0;i<listaProduccion.size();i++)
             {
-                if(miStock.getListaProduccion().get(i).getProductoElaborado().equals(miProducto))
+                if(listaProduccion.get(i).getProductoElaborado().equals(miProducto))
                 {
-                    total=total+miStock.getListaProduccion().get(i).getCantCajasProducidas();
+                    total=total+listaProduccion.get(i).getCantCajasProducidas();
                 }
             }
-        }
         return total;
     }
     //MUESTRA MI STOCK DE PRODUCTOS ORGINALES
-    public void calcularTotalStockProductos(List<Producto> misProductos,Inventario miStock)
+    public void calcularTotalStockProductos(List<Producto> misProductos)
     {
         int acum=0;
 
             for(int i=0;i<misProductos.size();i++)
             {
-                    acum=acum+calcularTotalProducto(misProductos.get(i),miStock);
+                    acum=acum+calcularTotalProducto(misProductos.get(i));
                     System.out.println("\nID:\n"+ misProductos.get(i).getId() + misProductos.get(i).getNombre() +": "+acum+"\n");
                     acum=0;
             }
