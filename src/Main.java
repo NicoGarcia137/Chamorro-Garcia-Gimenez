@@ -19,6 +19,26 @@ public class Main {
 
         System.out.println("Bienvenido a Export Digital");
 
+        Ingrediente ingrediente=new Ingrediente("Sal",2,2,"Sal marina",0,"12112","Elmasita");
+        List<Ingrediente> miIngredientes=new ArrayList<>();
+        miIngredientes.add(ingrediente);
+        Receta recetaPollo=new Receta("Medallon PO",60f,miIngredientes);
+        MedallonPO medallonPO=new MedallonPO("Medallon Pollo clasico",4.35f,recetaPollo,100,52.3f,13,-22,180,35,25,5,100f,"D6",1,32,3,125f,220f,20,36);
+        Ventas venta=new Ventas(medallonPO,100,"14023123");
+        Ventas vent1=new Ventas(medallonPO,1000,"14/02/1997");
+        Ventas venta2=new Ventas(medallonPO,100,"14/02/1994");
+        Produccion produccion=new Produccion(medallonPO,"10/02/1994",1000);
+        List<Producto> misProductos=new ArrayList<>();
+        List<Ventas> lista=new ArrayList<>();
+        List<Ingrediente> listaingredientes = new ArrayList<>();
+        listaingredientes.add(ingrediente);
+        List <Produccion> listaProduccion= new ArrayList<>();
+        HistorialVentas historial = new HistorialVentas(lista);
+        Inventario inventario=new Inventario(listaProduccion,listaingredientes);
+        Fabrica miFabrica=new Fabrica("Mardi Sa","Ortiz de zarate 3544",historial,inventario,misProductos);
+
+        miFabrica.IniciarProg();
+
 
 
 

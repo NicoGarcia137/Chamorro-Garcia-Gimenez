@@ -243,6 +243,19 @@ public class Fabrica extends Lista {
 
     }
 
+    public void IniciarProg () /// Inicia los menus
+    {
+       SistemMenus  MenuGeneral = new SistemMenus(this);
+
+       try {
+           MenuGeneral.MenuPrincipal();
+       }
+       catch(Exception e){
+           System.out.println("------------------ERROR MENU PRINCIPAL--------------");
+           System.out.println(e.getMessage());
+
+       }
+    }
     //To String
 
     public String toString() {

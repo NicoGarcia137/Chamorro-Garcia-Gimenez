@@ -2,6 +2,19 @@ import java.util.Scanner;
 
 public class SistemMenus {
 
+   private  Fabrica miFabricaTrabajo;
+    public SistemMenus(Fabrica fabricaATrabajar) {
+        setMiFabricaTrabajo(fabricaATrabajar);
+    }
+
+    public Fabrica getMiFabricaTrabajo() {
+        return miFabricaTrabajo;
+    }
+
+
+   private void setMiFabricaTrabajo(Fabrica miFabricaTrabajo) {
+        this.miFabricaTrabajo = miFabricaTrabajo;
+    }
 
     public void MenuPrincipal() {   ///Menu Principal del Sistema
 
@@ -34,6 +47,7 @@ public class SistemMenus {
 
                 case 1:
                     ///Llamado de fabrica a mostrar detalles
+                    System.out.println(getMiFabricaTrabajo().toString());
                     break;
                 case 2:
                     ///submenu de produccion
@@ -202,7 +216,7 @@ public class SistemMenus {
 
                 case 3:
                     System.out.println("\n----------------------------------------------------------------------------\n");
-                    System.out.println("Fin del Programa");
+                    System.out.println("Fin del SubMenuMisProducciones");
                     System.out.println("\n----------------------------------------------------------------------------\n");
                     break;
                 default:
