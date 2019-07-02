@@ -108,12 +108,13 @@ public class SistemMenus extends Lista {
                 case 2:///PRODUCIR
                     break;
                 case 3:/// VER INGREDIENTES
+                    miFabricaTrabajo.mostrar(miFabricaTrabajo.getMiStock().getListaIngredientes());
                     break;
                 case 4:/// VER PRODUCTOS
                     miFabricaTrabajo.getMiStock().calcularTotalStockProductos(miFabricaTrabajo.getMisProductos(),miFabricaTrabajo.getMiStock());
-
                     break;
                 case 5:///VER PRODUCCIONES
+                    miFabricaTrabajo.mostrar(miFabricaTrabajo.getMiStock().getListaProduccion());
                     break;
                 case 6:
                     System.out.println("\n----------------------------------------------------------------------------\n");
@@ -160,12 +161,34 @@ public class SistemMenus extends Lista {
             switch (valorMenu) {
 
                 case 1:///VENDER Y AGREGAR A HISTORIAL A VENTAS ESO
+                    int valorProducto=-1;
+                    int flagin=0;
+                    try
+                    {
+                        while(flagin==0) {
+                            System.out.println("Ingrese el ID del producto a vender");
+                            valorProducto = scanner.nextInt();
+                            if(valorProducto<miFabricaTrabajo.getMisProductos().size())
+                            {
+                                flagin=1;
+                            }
+                        }
+                        miFabricaTrabajo.vender(miFabricaTrabajo.getMisProduccionesVendidas(),miFabricaTrabajo.getMiStock(),miFabricaTrabajo.getMiHistorial(),miFabricaTrabajo.getMisProductos(),valorProducto);
+                    }
+                    catch (Exception e){
+
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case 2:///BUSCAR POR LOTE
+                    
+
                     break;
                 case 3:/// BUSCAR POR FECHA
+
                     break;
                 case 4:/// BUSCAR POR PRODUCTO
+
                     break;
                 case 5:///ELIMINAR POR LOTE
                     break;
