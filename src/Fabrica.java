@@ -242,6 +242,7 @@ public class Fabrica extends Lista {
         }
 
     }
+
     //To String
 
     public String toString() {

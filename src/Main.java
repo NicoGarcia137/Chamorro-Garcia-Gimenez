@@ -4,7 +4,38 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-	// Test ventas, produtos y historial
+        //Ingredientes FIJO
+
+        //Recetas FIJO
+
+        //Productos FIJO
+
+        //Producciones ??
+
+        //Ventas ??
+
+        //Fabrica
+
+
+        System.out.println("Bienvenido a Export Digital");
+
+
+
+
+
+
+
+
+
+
+
+        /*
+
+
+
+
+
+        // Test ventas, produtos y historial
 
         Ingrediente ingrediente=new Ingrediente("Sal",2,2,"Sal marina",0,"12112","Elmasita");
         List<Ingrediente> miIngredientes=new ArrayList<>();
@@ -36,40 +67,44 @@ public class Main {
         System.out.println("\n");
         System.out.println("\n");
         System.out.println("\n");
-        miFabrica.mostrar(miFabrica.getMiStock().getListaIngredientes());*/
-        miFabrica.agregar(medallonPO,miFabrica.getMisProductos());
+     /*
+
+      /*miFabrica.mostrar(miFabrica.getMiStock().getListaIngredientes());*/
+       /*
+        miFabrica.agregar(medallonPO, miFabrica.getMisProductos());
         miFabrica.mostrar(miFabrica.getMisProductos().get(0).getReceta().getIngredientes());
         miFabrica.comprarIngredientes(200);
         miFabrica.mostrar(miFabrica.getMisProductos().get(0).getReceta().getIngredientes());
         miFabrica.mostrar(miFabrica.getMiStock().getListaIngredientes());
-       // okSystem.out.println(produccion.toString());
-  //     ok System.out.println(medallonPO.toString());
-   //     System.out.println(miFabrica.getMisProductos().get(0).getReceta().toString());
+        // okSystem.out.println(produccion.toString());
+        //     ok System.out.println(medallonPO.toString());
+        //     System.out.println(miFabrica.getMisProductos().get(0).getReceta().toString());
         //ok miFabrica.mostrar(miFabrica.getMisProductos().get(0).getReceta().getIngredientes());
 
 
-       // miFabrica.agregar(produccion,inventario.getListaProduccion());
+        // miFabrica.agregar(produccion,inventario.getListaProduccion());
         //inventario.mostrar(inventario.getListaProduccion());
-      //  miFabrica.agregar(venta,historial.getVentas());//EL AGREGADO , LAS MUESTRAS Y EL ELIMINADO FUNCIONAN , ASI COMO EL BUSQUEDA GENERAL
-       // miFabrica.agregar(vent1,historial.getVentas());
-       // miFabrica.agregar(venta2,historial.getVentas());
-      //  historial.mostrar(historial.getVentas());
-       // historial.eliminar(venta,historial.getVentas());
-      //  historial.mostrar(historial.getVentas());
+        //  miFabrica.agregar(venta,historial.getVentas());//EL AGREGADO , LAS MUESTRAS Y EL ELIMINADO FUNCIONAN , ASI COMO EL BUSQUEDA GENERAL
+        // miFabrica.agregar(vent1,historial.getVentas());
+        // miFabrica.agregar(venta2,historial.getVentas());
+        //  historial.mostrar(historial.getVentas());
+        // historial.eliminar(venta,historial.getVentas());
+        //  historial.mostrar(historial.getVentas());
         miFabrica.producir(0);
-       // miFabrica.producir(miFabrica.getMiStock(),miFabrica.getMisProductos(),0);
+        // miFabrica.producir(miFabrica.getMiStock(),miFabrica.getMisProductos(),0);
         System.out.println("\n");
         System.out.println("\n");
         System.out.println("\n");
-        miFabrica.getMiStock().calcularTotalStockProductos(misProductos,miFabrica.getMiStock());
-     //   miFabrica.mostrar(miFabrica.getMiStock().getListaProduccion());
+        miFabrica.getMiStock().calcularTotalStockProductos(misProductos, miFabrica.getMiStock());
+        //   miFabrica.mostrar(miFabrica.getMiStock().getListaProduccion());
         //miFabrica.mostrar(historial.getVentas());
         System.out.println("\n");
         System.out.println("\n");
         System.out.println("\n");
-       //ok  List<Produccion>miListaDis=miFabrica.getMiStock().bajarDisponibles(miFabrica.getMiStock().getListaProduccion());
-      //ok  Inventario inventario1=new Inventario(miListaDis,listaingredientes);
-      //ok  inventario1.mostrar(inventario1.getListaProduccion());
+        */
+        //ok  List<Produccion>miListaDis=miFabrica.getMiStock().bajarDisponibles(miFabrica.getMiStock().getListaProduccion());
+        //ok  Inventario inventario1=new Inventario(miListaDis,listaingredientes);
+        //ok  inventario1.mostrar(inventario1.getListaProduccion());
        /* miFabrica.mostrar(miFabrica.getMiStock().getListaProduccion());
         System.out.println("\n");
         System.out.println("\n");
@@ -85,4 +120,5 @@ public class Main {
         //NOTA FALTAN LAS BUSQUEDAS TANTO EN INVENTARIO COMO EN HISTORIAL Y TESTEAR
 */
     }
+
 }
