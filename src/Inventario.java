@@ -106,15 +106,14 @@ public class Inventario extends Lista {
     public void calcularTotalStockProductos(List<Producto> misProductos,Inventario miStock)
     {
         int acum=0;
-        if(miStock.getListaProduccion()!=null&&misProductos!=null)
-        {
+
             for(int i=0;i<misProductos.size();i++)
             {
-                    acum=calcularTotalProducto(misProductos.get(i),miStock);
+                    acum=acum+calcularTotalProducto(misProductos.get(i),miStock);
                     System.out.println(misProductos.get(i).getNombre()+": "+acum+"\n");
                     acum=0;
             }
-        }
+
     }
     public void sumarCantidadIngredientes(int cantidad,int pos)
     {

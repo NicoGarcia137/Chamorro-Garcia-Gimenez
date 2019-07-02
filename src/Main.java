@@ -10,9 +10,7 @@ public class Main {
 
         //Productos FIJO
 
-        //Producciones ??
 
-        //Ventas ??
 
         //Fabrica
 

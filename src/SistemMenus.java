@@ -1,23 +1,25 @@
 import java.util.Scanner;
 
-public class SistemMenus {
+public class SistemMenus extends Lista {
 
-   private  Fabrica miFabricaTrabajo;
+    //Constructor
+    private Fabrica miFabricaTrabajo;
+
     public SistemMenus(Fabrica fabricaATrabajar) {
         setMiFabricaTrabajo(fabricaATrabajar);
     }
+
 
     public Fabrica getMiFabricaTrabajo() {
         return miFabricaTrabajo;
     }
 
 
-   private void setMiFabricaTrabajo(Fabrica miFabricaTrabajo) {
+    private void setMiFabricaTrabajo(Fabrica miFabricaTrabajo) {
         this.miFabricaTrabajo = miFabricaTrabajo;
     }
 
-    public void MenuPrincipal() {   ///Menu Principal del Sistema
-
+    public void MenuPrincipal() {
         Scanner scanner = new Scanner(System.in);
         int valorMenuPrincipal = -1;
 
@@ -56,23 +58,22 @@ public class SistemMenus {
                     ///submenu de ventas
                     break;
                 case 4:
-                    /// Sub menu Catalogo de productos de la fabrica
+                    subMenuCatalogo();
                     break;
                 case 5:
                     System.out.println("\n----------------------------------------------------------------------------\n");
                     System.out.println("Fin del Programa");
                     System.out.println("\n----------------------------------------------------------------------------\n");
                     break;
-                    default:
-                        System.out.println("Opción Incorrecta ");
-                        break;
+                default:
+                    System.out.println("Opción Incorrecta ");
+                    break;
 
             }
         }
     }
 
-    private void SubMenuMisProductos ()
-    {
+    private void SubMenuMisProductos() {
         Scanner scanner = new Scanner(System.in);
         int valorMenu = -1;
 
@@ -125,8 +126,8 @@ public class SistemMenus {
         }
 
     }
-    private void SubMenuVentas()
-    {
+
+    private void SubMenuVentas() {
         Scanner scanner = new Scanner(System.in);
         int valorMenu = -1;
 
@@ -177,22 +178,19 @@ public class SistemMenus {
 
             }
         }
-
     }
 
-    public void subMenuMisProductos() {   ///Menu Principal del Sistema
-
+    private void subMenuCatalogo ()
+    {
         Scanner scanner = new Scanner(System.in);
         int valorMenu = -1;
 
-        while (valorMenu != 5) {
+        while (valorMenu != 3) {
             System.out.println("--------------------CATALOGOS--------------------\n");
             System.out.println("1.Ver catalogo de Productos\n");
             System.out.println("2.Ver Receta de un producto\n");
             System.out.println("\n\n");
             System.out.println("3.Salir");
-            System.out.println("\n\n");
-            System.out.println("5.Salir");
             System.out.println("\n\n----------------------------------------------------------------------------");
 
             while (!scanner.hasNextInt()) {
@@ -208,10 +206,20 @@ public class SistemMenus {
             switch (valorMenu) {
 
                 case 1:
-                    /// mostrar todos los productos
+                    System.out.println("Listado Productos");
+                     getMiFabricaTrabajo().getMiStock().calcularTotalStockProductos(getMiFabricaTrabajo().getMisProductos(),getMiFabricaTrabajo().getMiStock());
                     break;
                 case 2:
-                    /// dar opciones de producto , que el usuario elija y mostrar receta producto
+                    int valorIdProductoReceta = -1;
+                    try {
+                        System.out.println("Ingrese el numero de Producto para averiguar su Receta :");
+                        valorIdProductoReceta = scanner.nextInt();
+                        System.out.println(getMiFabricaTrabajo().getMisProductos().get(valorIdProductoReceta - 1).getReceta());
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+
+
                     break;
 
                 case 3:
@@ -226,7 +234,7 @@ public class SistemMenus {
             }
         }
     }
-
-
-
 }
+
+
+
