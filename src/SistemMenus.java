@@ -77,16 +77,14 @@ public class SistemMenus extends Lista {
         Scanner scanner = new Scanner(System.in);
         int valorMenu = -1;
 
-        while (valorMenu != 6) {
+        while (valorMenu != 5) {
             System.out.println("--------------------PRODUCCION--------------------\n");
             System.out.println("1.\n");
             System.out.println("2.\n");
             System.out.println("3.\n");
             System.out.println("4.\n");
-            System.out.println("5.\n");
-
-            System.out.println("\n\n");
-            System.out.println("6.Salir");
+            System.out.println("\n");
+            System.out.println("5.Salir");
             System.out.println("\n\n----------------------------------------------------------------------------");
 
             while (!scanner.hasNextInt()) {
@@ -226,6 +224,15 @@ public class SistemMenus extends Lista {
                     }
                     break;
                 case 5:///ELIMINAR POR LOTE
+                    try {
+                        int NrLoteElim = 0;
+                        System.out.println("Ingrese Nr Lote de Venta a Eliminar:");
+                        NrLoteElim = scanner.nextInt();
+                        miFabricaTrabajo.getMiHistorial().eliminarxLote(NrLoteElim);
+
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case 6:
                     System.out.println("\n----------------------------------------------------------------------------\n");
@@ -235,10 +242,8 @@ public class SistemMenus extends Lista {
                 default:
                     System.out.println("Opción Incorrecta ");
                     break;
-
             }
         }
-
     }
 
 
@@ -279,8 +284,6 @@ public class SistemMenus extends Lista {
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
-
-
                     break;
 
                 case 3:
