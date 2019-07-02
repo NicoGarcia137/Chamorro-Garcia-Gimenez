@@ -110,6 +110,8 @@ public class SistemMenus extends Lista {
                 case 3:/// VER INGREDIENTES
                     break;
                 case 4:/// VER PRODUCTOS
+                    miFabricaTrabajo.getMiStock().calcularTotalStockProductos(miFabricaTrabajo.getMisProductos(),miFabricaTrabajo.getMiStock());
+
                     break;
                 case 5:///VER PRODUCCIONES
                     break;
@@ -132,7 +134,7 @@ public class SistemMenus extends Lista {
         int valorMenu = -1;
 
         while (valorMenu != 6) {
-            System.out.println("--------------------PRODUCCION--------------------\n");
+            System.out.println("--------------------VENTAS--------------------\n");
             System.out.println("1.\n");
             System.out.println("2.\n");
             System.out.println("3.\n");
@@ -144,7 +146,7 @@ public class SistemMenus extends Lista {
             System.out.println("\n\n----------------------------------------------------------------------------");
 
             while (!scanner.hasNextInt()) {
-                System.out.println("--------------------PRODUCCION--------------------\n");
+                System.out.println("--------------------VENTAS-------------------\n");
                 System.out.println("1.\n");
                 System.out.println("2.\n");
                 System.out.println("3.\n");
@@ -207,7 +209,7 @@ public class SistemMenus extends Lista {
 
                 case 1:
                     System.out.println("Listado Productos");
-                     getMiFabricaTrabajo().getMiStock().calcularTotalStockProductos(getMiFabricaTrabajo().getMisProductos(),getMiFabricaTrabajo().getMiStock());
+                    miFabricaTrabajo.mostrar(miFabricaTrabajo.getMisProductos());
                     break;
                 case 2:
                     int valorIdProductoReceta = -1;

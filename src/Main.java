@@ -27,6 +27,7 @@ public class Main {
         Ventas venta2=new Ventas(medallonPO,100,"14/02/1994");
         Produccion produccion=new Produccion(medallonPO,"10/02/1994",1000);
         List<Producto> misProductos=new ArrayList<>();
+        misProductos.add(medallonPO);
         List<Ventas> lista=new ArrayList<>();
         List<Ingrediente> listaingredientes = new ArrayList<>();
         listaingredientes.add(ingrediente);
