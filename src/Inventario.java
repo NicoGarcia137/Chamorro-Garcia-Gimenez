@@ -48,7 +48,7 @@ public class Inventario extends Lista {
         return listaIngredientes;
     }
 
-    private void setListaIngredientes(List<Ingrediente> listaIngredientes) {
+    protected void setListaIngredientes(List<Ingrediente> listaIngredientes) {
         this.listaIngredientes = listaIngredientes;
     }
     private void setListaIngredientes()
@@ -110,15 +110,15 @@ public class Inventario extends Lista {
             for(int i=0;i<misProductos.size();i++)
             {
                     acum=acum+calcularTotalProducto(misProductos.get(i),miStock);
-                    System.out.println(misProductos.get(i).getNombre()+": "+acum+"\n");
+                    System.out.println("\nID:\n"+ misProductos.get(i).getId() + misProductos.get(i).getNombre() +": "+acum+"\n");
                     acum=0;
             }
 
     }
     public void sumarCantidadIngredientes(int cantidad,int pos)
     {
-        int total=this.listaIngredientes.get(pos).getCantBolsas()+cantidad;
-        this.listaIngredientes.get(pos).setCantBolsas(total);
+        int total=listaIngredientes.get(pos).getCantBolsas()+cantidad;
+        listaIngredientes.get(pos).setCantBolsas(total);
     }
     public void restarCantidadIngredientes(int cantidad,int pos)
     {

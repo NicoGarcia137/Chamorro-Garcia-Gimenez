@@ -48,7 +48,7 @@ private String Fabricante;
     }
 
     protected void setCantBolsas(Integer cantBolsas) {
-        CantBolsas = cantBolsas;
+        this.CantBolsas = cantBolsas;
     }
 
     public int getKgXBolsa() {

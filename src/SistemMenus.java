@@ -53,9 +53,11 @@ public class SistemMenus extends Lista {
                     break;
                 case 2:
                     ///submenu de produccion
+                    SubMenuMisProductos();
                     break;
                 case 3:
                     ///submenu de ventas
+                    SubMenuVentas();
                     break;
                 case 4:
                     subMenuCatalogo();
@@ -77,44 +79,45 @@ public class SistemMenus extends Lista {
         Scanner scanner = new Scanner(System.in);
         int valorMenu = -1;
 
-        while (valorMenu != 5) {
+        while (valorMenu != 4) {
             System.out.println("--------------------PRODUCCION--------------------\n");
-            System.out.println("1.\n");
-            System.out.println("2.\n");
-            System.out.println("3.\n");
-            System.out.println("4.\n");
+            System.out.println("1.Iniciar produccion\n");
+            System.out.println("2.Ver productos\n");
+            System.out.println("3.Ver mis producciones\n");
             System.out.println("\n");
-            System.out.println("5.Salir");
+            System.out.println("4.Salir");
             System.out.println("\n\n----------------------------------------------------------------------------");
 
             while (!scanner.hasNextInt()) {
                 System.out.println("--------------------PRODUCCION--------------------\n");
-                System.out.println("1.\n");
-                System.out.println("2.\n");
-                System.out.println("3.\n");
-                System.out.println("4.\n");
-                System.out.println("\n\n");
-                System.out.println("6.Salir");
-                System.out.println("\n\n----------------------------------------------------------------------------\n");
+                System.out.println("1.Iniciar produccion\n");
+                System.out.println("2.Ver productos\n");
+                System.out.println("3.Ver mis producciones\n");
+                System.out.println("\n");
+                System.out.println("4.Salir");
+                System.out.println("\n\n----------------------------------------------------------------------------");
                 scanner.next();
             }
             valorMenu = scanner.nextInt();
             switch (valorMenu) {
 
-                case 1:///COMPRAR INGREDIENTES
+                case 1:///PRODUCIR
+                     {
+                         System.out.println("\nSus producciones actuales son:\n");
+                         miFabricaTrabajo.getMiStock().calcularTotalStockProductos(miFabricaTrabajo.getMisProductos(),miFabricaTrabajo.getMiStock());
+                         System.out.println("\n\n\n");
+                         System.out.println("Ingrese el ID del producto a producir\n");
+                         int id=scanner.nextInt();
+                         miFabricaTrabajo.producir(id-1);
+                     }
                     break;
-                case 2:///PRODUCIR
-                    break;
-                case 3:/// VER INGREDIENTES
-                    miFabricaTrabajo.mostrar(miFabricaTrabajo.getMiStock().getListaIngredientes());
-                    break;
-                case 4:/// VER PRODUCTOS
+                case 2:/// VER PRODUCTOS
                     miFabricaTrabajo.getMiStock().calcularTotalStockProductos(miFabricaTrabajo.getMisProductos(), miFabricaTrabajo.getMiStock());
                     break;
-                case 5:///VER PRODUCCIONES
+                case 3:///VER PRODUCCIONES
                     miFabricaTrabajo.mostrar(miFabricaTrabajo.getMiStock().getListaProduccion());
                     break;
-                case 6:
+                case 4:
                     System.out.println("\n----------------------------------------------------------------------------\n");
                     System.out.println("Saliendo de SubMenuProducciones ");
                     System.out.println("\n----------------------------------------------------------------------------\n");
@@ -134,22 +137,22 @@ public class SistemMenus extends Lista {
 
         while (valorMenu != 6) {
             System.out.println("--------------------VENTAS--------------------\n");
-            System.out.println("1.\n");
-            System.out.println("2.\n");
-            System.out.println("3.\n");
-            System.out.println("4.\n");
-            System.out.println("5.\n");
-
+            System.out.println("1.Realizar una venta\n");
+            System.out.println("2.Buscar una venta por Lote\n");
+            System.out.println("3.Buscar una venta por Fecha\n");
+            System.out.println("4.Buscar una venta por Producto\n");
+            System.out.println("5.Eliminar una venta por Lote\n");
             System.out.println("\n\n");
             System.out.println("6.Salir");
             System.out.println("\n\n----------------------------------------------------------------------------");
 
             while (!scanner.hasNextInt()) {
                 System.out.println("--------------------VENTAS-------------------\n");
-                System.out.println("1.\n");
-                System.out.println("2.\n");
-                System.out.println("3.\n");
-                System.out.println("4.\n");
+                System.out.println("1.Realizar una venta\n");
+                System.out.println("2.Buscar una venta por Lote\n");
+                System.out.println("3.Buscar una venta por Fecha\n");
+                System.out.println("4.Buscar una venta por Producto\n");
+                System.out.println("5.Eliminar una venta por Lote\n");
                 System.out.println("\n\n");
                 System.out.println("6.Salir");
                 System.out.println("\n\n----------------------------------------------------------------------------\n");
@@ -159,17 +162,17 @@ public class SistemMenus extends Lista {
             switch (valorMenu) {
 
                 case 1:///VENDER Y AGREGAR A HISTORIAL A VENTAS ESO
-                    int valorProducto = -1;
+                    int valorProducto=0;
                     int flagin = 0;
                     try {
                         while (flagin == 0) {
                             System.out.println("Ingrese el ID del producto a vender");
                             valorProducto = scanner.nextInt();
-                            if (valorProducto < miFabricaTrabajo.getMisProductos().size()) {
+                            if (valorProducto <= miFabricaTrabajo.getMisProductos().size()) {
                                 flagin = 1;
                             }
                         }
-                        miFabricaTrabajo.vender(miFabricaTrabajo.getMisProduccionesVendidas(), miFabricaTrabajo.getMiStock(), miFabricaTrabajo.getMiHistorial(), miFabricaTrabajo.getMisProductos(), valorProducto);
+                        miFabricaTrabajo.vender(valorProducto-1);
                     } catch (Exception e) {
 
                         System.out.println(e.getMessage());
@@ -193,7 +196,7 @@ public class SistemMenus extends Lista {
                     String fechaUsr = "";
                     try {
                         System.out.println("Ingrese Fecha de la venta: ");
-                        fechaUsr = scanner.next();
+                        fechaUsr = scanner.nextLine();
                         miFabricaTrabajo.getMiHistorial().buscarxFecha(fechaUsr);
                     } catch (Exception f) {
                         System.out.println(f.getMessage());
