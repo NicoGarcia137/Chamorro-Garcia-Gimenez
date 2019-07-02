@@ -74,6 +74,21 @@ public class HistorialVentas extends  Lista{
         }
     }
 
+    public void eliminarxLote (int loteAEliminar  )
+    {
+        int encontrado=0;
+        for(int i=0;i<ventas.size()&&encontrado==0;i++)
+        {
+            if(loteAEliminar==ventas.get(i).getId()) {
+                ventas.remove(i);
+                encontrado = 1;
+            }
+        }
+        if(encontrado==0)
+        {
+            System.out.println("\nLote no encontrado\n");
+        }
+    }
     public void buscarxFecha(String FechaABuscar) {
       int encontrado=0;
       int finEncontrado=0;
