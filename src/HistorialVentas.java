@@ -43,50 +43,80 @@ public class HistorialVentas extends  Lista{
     }
 
     //Methods
-    public Ventas buscarXLote(int lote) {
-        Ventas ventaEncontrada=null;
-        boolean encontrado = false;
-        for (int i = 0; i < ventas.size() && encontrado == false; i++) {
-            if (lote == ventas.get(i).getId()) {
-                encontrado = true;
-                ventaEncontrada=ventas.get(i);
+    public void buscarXLote(int lote)
+    {
+        int encontrado=0;
+        for(int i=0;i<ventas.size()&&encontrado==0;i++)
+        {
+            if(lote==ventas.get(i).getId()) {
+                System.out.println(ventas.get(i).toString());
+                mostrar(ventas.get(i).getLotes());
+                encontrado = 1;
             }
         }
-        return ventaEncontrada;
+        if(encontrado==0)
+        {
+            System.out.println("\nLote no encontrado\n");
+        }
     }
-
-    public void buscarXFecha(String fecha) {
-        ArrayList<Ventas> ventasAux = new ArrayList<>();
-        int posicion=0;
-            int i=0;
-            while (i < ventas.size() ) {
-                posicion=ventas.indexOf(fecha);
-                System.out.println(posicion);
-                if (posicion>-1) {
-                    ventasAux.add(ventas.get(i));
-                    System.out.println(ventasAux.get(i));
-                    i=posicion;
-                }
-                i++;
-            }
-    }
-        //Listar del generico
-
-    public ArrayList<Ventas> buscarXProducto(String producto) {
-        ArrayList<Ventas> ventasAux = new ArrayList<Ventas>();
-        boolean encontrado = false;
-        int posicion = ventas.indexOf(producto);
-        if (posicion > -1) {
-            int i = posicion;
-            while (i < ventas.size() && encontrado == false) {
-                if (ventas.get(i).getProducto() == producto) {
-                    ventasAux.add(ventas.get(i));
-                } else
-                    encontrado = true;
-                i++;
+    public void buscarXProducto(Producto productoABuscar) {
+        int encontrado=0;
+        for(int i=0;i<ventas.size();i++)
+        {
+            if(ventas.get(i).getMiProducto().equals(productoABuscar))
+            {
+                System.out.println(ventas.get(i).toString());
+                mostrar(ventas.get(i).getLotes());
+                encontrado=1;
             }
         }
-        return ventasAux;
+        if(encontrado==0)
+        {
+            System.out.println("\nProducto no encontrado\n");
+        }
     }
+
+    public void eliminarxLote (int loteAEliminar  )
+    {
+        int encontrado=0;
+        int pos=-1;
+        for(int i=0;i<ventas.size()&&encontrado==0;i++)
+        {
+            if(ventas.get(i).getId()==loteAEliminar) {
+                pos = i;
+                encontrado = 1;
+                System.out.println(encontrado);
+            }
+        }
+        if(encontrado==1)
+        {
+            ventas.remove(pos);
+        }
+    }
+    public void buscarxFecha(String FechaABuscar) {
+      int encontrado=0;
+      int finEncontrado=0;
+      for(int i=0;i<ventas.size()&&finEncontrado==0;i++)
+      {
+          if (ventas.get(i).getFecha().equals(FechaABuscar))
+          {
+              System.out.println(ventas.get(i).toString());
+              mostrar(ventas.get(i).getLotes());
+              encontrado=1;
+          }
+          else
+          {
+              if(encontrado==1)
+              {
+                  finEncontrado=1;
+              }
+          }
+      }
+      if(encontrado==0)
+      {
+          System.out.println("Fecha no encontrada\n");
+      }
+    }
+
 
 }

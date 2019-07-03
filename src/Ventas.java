@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Ventas extends Lista{
     //Private Attributes
-    private static int code = 0;
+    private static int code = 1;
     private int id;
     private Producto miProducto;
     private float kgVendidos;

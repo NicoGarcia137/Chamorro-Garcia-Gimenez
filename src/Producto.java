@@ -3,7 +3,7 @@ import java.util.Objects;
 public abstract class Producto {
     //Private attributes
     private int id;
-    private static int generateId=0;
+    private static int generateId=1;
     private String nombre;
     private float kgXcaja;
     private Receta receta;
@@ -70,6 +70,7 @@ public abstract class Producto {
     private void setCantCajaxPallet(int cantCajaxPallet) {
         this.cantCajaxPallet = cantCajaxPallet;
     }
+
 
     //to String
     public String toString() {

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Receta {
@@ -7,7 +8,7 @@ public class Receta {
     private static int generateId=1;
     private String Nombre;
     private float LitrosAgua;
-    private ArrayList<Ingrediente> ingredientes;
+    private List<Ingrediente> ingredientes;
 
     //Constructors
 
@@ -15,9 +16,27 @@ public class Receta {
        setId();
         setNombre(nombre);
         setLitrosAgua(litrosAgua);
+        setIngredientes();
+    }
+    public Receta(String nombre, float litrosAgua,List<Ingrediente>ingredientes) {
+        setId();
+        setNombre(nombre);
+        setLitrosAgua(litrosAgua);
+        setIngredientes(ingredientes);
     }
 
     //Getters && Setters
+    public List<Ingrediente> getIngredientes() {
+        return ingredientes;
+    }
+
+    private void setIngredientes() {
+        ingredientes=new ArrayList<>();
+    }
+
+    private void setIngredientes(List<Ingrediente> ingredientes) {
+        this.ingredientes=ingredientes;
+    }
 
     public int getId() {
         return id;
