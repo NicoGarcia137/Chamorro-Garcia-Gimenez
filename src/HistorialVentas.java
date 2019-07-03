@@ -79,16 +79,18 @@ public class HistorialVentas extends  Lista{
     public void eliminarxLote (int loteAEliminar  )
     {
         int encontrado=0;
+        int pos=-1;
         for(int i=0;i<ventas.size()&&encontrado==0;i++)
         {
-            if(loteAEliminar==ventas.get(i).getId()) {
-                ventas.remove(i);
+            if(ventas.get(i).getId()==loteAEliminar) {
+                pos = i;
                 encontrado = 1;
+                System.out.println(encontrado);
             }
         }
-        if(encontrado==0)
+        if(encontrado==1)
         {
-            System.out.println("\nLote no encontrado\n");
+            ventas.remove(pos);
         }
     }
     public void buscarxFecha(String FechaABuscar) {
@@ -96,7 +98,7 @@ public class HistorialVentas extends  Lista{
       int finEncontrado=0;
       for(int i=0;i<ventas.size()&&finEncontrado==0;i++)
       {
-          if (ventas.get(i).getFecha()==FechaABuscar)
+          if (ventas.get(i).getFecha().equals(FechaABuscar))
           {
               System.out.println(ventas.get(i).toString());
               mostrar(ventas.get(i).getLotes());

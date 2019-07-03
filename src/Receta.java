@@ -63,22 +63,10 @@ public class Receta {
     }
 
     //Methods
-    public String mostrarIngredientesReceta()
-    {
-        String definitivo="\n";
-        String superString="\n";
-        String misIngredientes;
-        for(int i=0;i<ingredientes.size();i++)
-        {
-            misIngredientes=ingredientes.get(i).toString();
-            definitivo=superString+misIngredientes;
-        }
-        return definitivo;
-    }
     //To String
     public String toString() {
         String base= "\nID:%d \n Nombre:%s \n Litros de Agua:%.2f\n";
-        return String.format(base,getId(),getNombre(),getLitrosAgua())+mostrarIngredientesReceta();
+        return String.format(base,getId(),getNombre(),getLitrosAgua());
     }
     //Equals
     public boolean equals(Object o) {

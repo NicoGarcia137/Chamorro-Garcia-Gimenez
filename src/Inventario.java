@@ -108,7 +108,7 @@ public class Inventario extends Lista {
             for(int i=0;i<misProductos.size();i++)
             {
                     acum=acum+calcularTotalProducto(misProductos.get(i));
-                    System.out.println("\nID:\n"+ misProductos.get(i).getId() + misProductos.get(i).getNombre() +": "+acum+"\n");
+                    System.out.println("\nID: "+ misProductos.get(i).getId()+"\n" + misProductos.get(i).getNombre()+" \nCantidad Producida " +": "+acum+"\n");
                     acum=0;
             }
 

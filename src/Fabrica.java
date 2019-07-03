@@ -106,7 +106,7 @@ public class Fabrica extends Lista {
                 opcion = teclado.nextInt();
                 switch (opcion) {
                     case 1: {
-                        if(cantidad<miStock.calcularTotalProducto(miProducto)) {
+                        if(cantidad<=miStock.calcularTotalProducto(miProducto)) {
                             while (cantidad != 0) {
                                 cantidad = miStock.cambiarDisponibilidad(cantidad, miProducto);
                             }

@@ -71,6 +71,7 @@ public abstract class Producto {
         this.cantCajaxPallet = cantCajaxPallet;
     }
 
+
     //to String
     public String toString() {
         String base=("\nProducto\nID: %d\n Nombre: %s\n KgxCaja: %.2f\n CantCajaxPallet: %d\nReceta Nombre: %s\nPrecio x kg: %.2f\n");
